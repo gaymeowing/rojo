@@ -1,4 +1,3 @@
---!native
 
 local StudioService = game:GetService("StudioService")
 local AssetService = game:GetService("AssetService")
@@ -39,7 +38,8 @@ local function getRecoloredClassIcon(className, color)
 	local iconProps = StudioService:GetClassIcon(className)
 
 	if iconProps and color then
-		local success, editableImageSize, editableImagePixels = pcall(function(iconProps: { [any]: any }, color: Color3): (Vector2, buffer)
+		--stylua: ignore
+		local success, editableImageSize, editableImagePixels = pcall(@native function(iconProps: { [any]: any }, color: Color3): (Vector2, buffer)
 			local size, pixels = getImageSizeAndPixels(iconProps.Image)
 			local pixels_len = buffer.len(pixels)
 
